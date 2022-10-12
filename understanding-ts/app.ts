@@ -1,10 +1,21 @@
-function add(n1: number, n2: number) {
-  return n1 + n2;
+let userInput: unknown;
+let userName: string;
+
+userInput = 5;
+userInput = "Max";
+if (typeof userInput === "string") {
+  //this check makes it work with unknown
+  userName = userInput; //throws error if userInput type is unknown (works with any)
 }
 
-const number1 = 5;
-const number2 = 2.8;
+//this function returns never (because it never returns anything)
+function generateError(msg: string, errCode: number): never {
+  throw {
+    msg,
+    errorCode: errCode,
+  };
+  //while(true){} //infinite loop
+}
 
-const result = add(number1, number2);
-
+const result = generateError("error occurred", 500);
 console.log(result);
